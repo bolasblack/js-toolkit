@@ -1,6 +1,5 @@
 {
   "name": "@c4605/react-components",
-  "version": "1.0.0",
   "description": "Some useful React components",
   "main": null,
   "repository": "https://github.com/bolasblack/react-components",
@@ -11,13 +10,14 @@
     "packages/*"
   ],
   "scripts": {
-    "compile": "tsc -b ./tsconfig.compile.json",
     "postinstall": "patch-package",
     "docz:dev": "rm -rf .docz && docz dev",
     "docz:build": "rm -rf .docz && docz build",
     "docz:serve": "rm -rf .docz && docz serve",
     "docz:publish": "./scripts/publish_docz.sh",
-    "test": "yarn compile && NODE_ENV=test yarn jest --no-cache 'packages/.*/src'"
+    "test": "yarn compile && NODE_ENV=test yarn jest --no-cache 'packages/.*/src'",
+    "compile": "tsc -b ./tsconfig.compile.json",
+    "release": "lerna version --sign-git-tag --conventional-commits --create-release github"
   },
   "prettier": "@c4605/toolconfs/prettierrc",
   "lint-staged": {
@@ -58,7 +58,6 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.6.0",
     "@c4605/toolconfs": "^4.7.1",
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
